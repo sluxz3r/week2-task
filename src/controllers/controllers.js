@@ -1,5 +1,5 @@
-const userModels = require('../models/models')
-const MiscHelper = require('../helpers/helpers')
+const bookModels = require('../models/models')
+const BookHelper = require('../helpers/helpers')
 
 module.exports = {
   getIndex: (req, res) => {
@@ -7,39 +7,38 @@ module.exports = {
   },
 
   // Get ALl Books
-  getUsers: (req, res) => {
-    userModels.getUsers()
+  getBooks: (req, res) => {
+    bookModels.getBooks()
       .then((resultUser) => {
         const result = resultUser
-        MiscHelper.response(res, result, 200)
+        BookHelper.response(res, result, 200)
       })
       .catch((error) => {
         console.log(error)
       })
   },
 
-  // Get By ID
-  userDetail: (req, res) => {
+  // Get Book By Id
+  bookId: (req, res) => {
     const bookid = req.params.bookid
-
-    userModels.userDetail(bookid)
-      .then((resultUser) => {
-        const result = resultUser[0]
-        MiscHelper.response(res, result, 200)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    bookModels.bookId(bookid)
+    .then((resultUser) => {
+      const result = resultUser
+      BookHelper.response(res, result, 200)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   },
 
-    // Get By Category
-    userCategory: (req, res) => {
-      const category = req.params.category
+  // Get By Category
+  bookCategory: (req, res) => {
+    const category = req.params.category
   
-      userModels.userCategory(category)
-        .then((resultUser) => {
+    bookModels.bookCategory(category)
+      .then((resultUser) => {
           const result = resultUser
-          MiscHelper.response(res, result, 200)
+          BookHelper.response(res, result, 200)
         })
         .catch((error) => {
           console.log(error)
@@ -47,13 +46,13 @@ module.exports = {
     },
 
     // Get By Location
-    userLocation: (req, res) => {
+    bookLocation: (req, res) => {
       const location = req.params.location
   
-      userModels.userLocation(location)
+      bookModels.bookLocation(location)
         .then((resultUser) => {
           const result = resultUser
-          MiscHelper.response(res, result, 200)
+          BookHelper.response(res, result, 200)
         })
         .catch((error) => {
           console.log(error)
@@ -61,7 +60,7 @@ module.exports = {
     },
 
     // POST User
-    postUser: (req, res) => {
+    postBook: (req, res) => {
       const data = {
         name: req.body.name,
         writer: req.body.writer,
@@ -69,10 +68,10 @@ module.exports = {
         category: req.body.category
       }
   
-      userModels.postUser(data)
+      bookModels.postBook(data)
         .then((resultUser) => {
           const result = resultUser[0]
-          MiscHelper.response(res, data, 200)
+          BookHelper.response(res, data, 200)
         })
         .catch((error) => {
           console.log(error)
@@ -80,7 +79,7 @@ module.exports = {
     },
 
     // Update Book
-    patchUser: (req, res) => {
+    patchBook: (req, res) => {
       const data = {
         name: req.body.name,
         writer: req.body.writer,
@@ -89,18 +88,10 @@ module.exports = {
       }
       const bookid = req.params.bookid
 
-      const dataa = {
-        bookid : req.params.bookid,
-        name: req.body.name,
-        writer: req.body.writer,
-        location: req.body.location,
-        category: req.body.category
-      }
-  
-      userModels.patchUser(bookid, data)
+      bookModels.patchBook(bookid, data)
         .then((resultUser) => {
           const result = resultUser[0]
-          MiscHelper.response(res, dataa, 200)
+          BookHelper.response(res, data, 200)
         })
         .catch((error) => {
           console.log(error)
@@ -108,16 +99,16 @@ module.exports = {
     },
 
     // Delete User By Id
-    userDelete: (req, res) => {
+    bookDelete: (req, res) => {
       const bookid = req.params.bookid
   
-      userModels.userDelete(bookid)
+      bookModels.bookDelete(bookid)
         .then((resultUser) => {
           const result = resultUser
-          MiscHelper.response(res, result, 200)
+          BookHelper.response(res, result, 200)
         })
         .catch((error) => {
           console.log(error)
         })
-    },
+    }
 }

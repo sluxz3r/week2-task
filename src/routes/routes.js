@@ -1,16 +1,16 @@
 const express = require('express')
 const Route = express.Router()
 
-const UserController = require('../controllers/controllers')
+const BookController = require('../controllers/controllers')
 
 Route
-  .get('/cek', UserController.getIndex)
-  .get('/', UserController.getUsers)
-  .get('/:bookid', UserController.userDetail) 
-  .get('/category/:category', UserController.userCategory)
-  .get('/location/:location', UserController.userLocation)
-  .post('/', UserController.postUser)
-  .patch('/:bookid', UserController.patchUser)
-  .delete('/:bookid', UserController.userDelete)
+  .get('/cek', BookController.getIndex)
+  .get('/', BookController.getBooks)
+  .get('/:bookid', BookController.bookId)
+  .get('/category/:category', BookController.bookCategory)
+  .get('/location/:location', BookController.bookLocation)
+  .post('/', BookController.postBook)
+  .patch('/:bookid', BookController.patchBook)
+  .delete('/:bookid', BookController.bookDelete)
 
 module.exports = Route
