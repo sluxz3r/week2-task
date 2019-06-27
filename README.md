@@ -11,7 +11,7 @@
 ## Installation
 ### Clone
 ```
-$ git clone https://github.com/tatasfachrul/simple-REST
+$ git clone https://github.com/sluxz3r/week2-task.git
 $ cd simple-REST
 $ npm install
 ```
@@ -30,6 +30,23 @@ DB_NAME="Your_Table"
 
 SERVER_PORT=9999
 ```
+
+### Create 3 Tables
+```
+1. book
+2. cat
+3. loc
+```
+
+```
+book { bookid[AI], name, writer, category, location}
+cat {catid[AI], category}
+loc {locid[AI], location}
+```
+```
+Or Use Your Query with your Db, set Into (../src/models/models.js)
+```
+
 ### Start Development Server
 ```
 $ npm start
@@ -38,4 +55,4 @@ $ npm start
 ### License
 ----
 
-[Beerware](https://en.wikipedia.org/wiki/Beerware "Beerware") © [Tatas](https://github.com/tatasfachrul "Tatas")
+[Beerware](https://en.wikipedia.org/wiki/Beerware "Beerware") © Thanks To [Mr.Tatas](https://github.com/tatasfachrul "Tatas")
