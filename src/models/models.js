@@ -1,11 +1,15 @@
 const connection = require('../configs/db')
 
 module.exports = {
-  getUsers: (callback) => {
-    connection.query('SELECT book.bookid, book.name, book.writer, cat.category, loc.location FROM book INNER JOIN cat ON book.category=cat.catid INNER JOIN loc ON book.location=loc.locid ', (err, result) => {
-      if (err) console.log(err)
-
-      callback(err, result)
+  getUsers: () => {
+    return new Promise((resolve, reject) => {
+      connection.query('SELECT book.bookid, book.name, book.writer, cat.category, loc.location FROM book INNER JOIN cat ON book.category=cat.catid INNER JOIN loc ON book.location=loc.locid ', (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject(new Error(err))
+        }
+      }) 
     })
   },
 

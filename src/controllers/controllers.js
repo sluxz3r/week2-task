@@ -3,17 +3,19 @@ const MiscHelper = require('../helpers/helpers')
 
 module.exports = {
   getIndex: (req, res) => {
-    return res.json({ message: 'Hello' })
+    return res.json({ message: 'Hello!!! Welcome to Arkademy' })
   },
 
-  // Get All User
+  // Get ALl Books
   getUsers: (req, res) => {
-    userModels.getUsers((err, result) => {
-      if (err) console.log(err)
-
-      // res.json(result)
-      MiscHelper.response(res, result, 200)
-    })
+    userModels.getUsers()
+      .then((resultUser) => {
+        const result = resultUser
+        MiscHelper.response(res, result, 200)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   },
 
   // Get By ID
@@ -97,7 +99,7 @@ module.exports = {
   
       userModels.patchUser(bookid, data)
         .then((resultUser) => {
-          const result = resultUser
+          const result = resultUser[0]
           MiscHelper.response(res, dataa, 200)
         })
         .catch((error) => {
@@ -118,7 +120,4 @@ module.exports = {
           console.log(error)
         })
     },
-
-
-
 }
