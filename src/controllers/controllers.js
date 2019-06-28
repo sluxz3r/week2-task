@@ -18,6 +18,19 @@ module.exports = {
       })
   },
 
+  // Get Books By Name
+  nameBook: (req, res) => {
+    const name = req.params.name
+    bookModels.nameBook(name)
+      .then((resultBook) => {
+        const result = resultBook
+        BookHelper.response(res, result, 200)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  },
+
   // Get Book By Id
   bookId: (req, res) => {
     const bookid = req.params.bookid

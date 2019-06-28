@@ -14,6 +14,20 @@ module.exports = {
     })
   },
 
+  // Get by Name
+  nameBook: (name) => {
+    const likeName = '%' + name + '%'
+    return new Promise((resolve, reject) => {
+      conn.query('SELECT book.bookid, book.name, book.writer, cat.category, loc.location FROM book INNER JOIN cat ON book.category=cat.catid INNER JOIN loc ON book.location=loc.locid WHERE book.name LIKE ?', likeName, (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject(new Error(err))
+        }
+      }) 
+    })
+  },
+
   // Get by Id
   bookId: (bookid) => {
     return new Promise((resolve, reject) => {
