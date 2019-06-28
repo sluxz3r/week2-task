@@ -9,8 +9,8 @@ module.exports = {
   // Get ALl Books
   getBooks: (req, res) => {
     bookModels.getBooks()
-      .then((resultUser) => {
-        const result = resultUser
+      .then((resultBook) => {
+        const result = resultBook
         BookHelper.response(res, result, 200)
       })
       .catch((error) => {
@@ -22,8 +22,8 @@ module.exports = {
   bookId: (req, res) => {
     const bookid = req.params.bookid
     bookModels.bookId(bookid)
-    .then((resultUser) => {
-      const result = resultUser
+    .then((resultBook) => {
+      const result = resultBook[0]
       BookHelper.response(res, result, 200)
     })
     .catch((error) => {
@@ -36,8 +36,8 @@ module.exports = {
     const category = req.params.category
   
     bookModels.bookCategory(category)
-      .then((resultUser) => {
-          const result = resultUser
+      .then((resultBook) => {
+          const result = resultBook
           BookHelper.response(res, result, 200)
         })
         .catch((error) => {
@@ -50,8 +50,8 @@ module.exports = {
       const location = req.params.location
   
       bookModels.bookLocation(location)
-        .then((resultUser) => {
-          const result = resultUser
+        .then((resultBook) => {
+          const result = resultBook
           BookHelper.response(res, result, 200)
         })
         .catch((error) => {
@@ -69,8 +69,8 @@ module.exports = {
       }
   
       bookModels.postBook(data)
-        .then((resultUser) => {
-          const result = resultUser[0]
+        .then((resultBook) => {
+          const result = resultBook[0]
           BookHelper.response(res, data, 200)
         })
         .catch((error) => {
@@ -89,8 +89,8 @@ module.exports = {
       const bookid = req.params.bookid
 
       bookModels.patchBook(bookid, data)
-        .then((resultUser) => {
-          const result = resultUser[0]
+        .then((resultBook) => {
+          const result = resultBook[0]
           BookHelper.response(res, data, 200)
         })
         .catch((error) => {
@@ -103,8 +103,8 @@ module.exports = {
       const bookid = req.params.bookid
   
       bookModels.bookDelete(bookid)
-        .then((resultUser) => {
-          const result = resultUser
+        .then((resultBook) => {
+          const result = resultBook
           BookHelper.response(res, result, 200)
         })
         .catch((error) => {

@@ -8,5 +8,5 @@ module.exports = {
     resultPrint.result = result
 
     return res.status(resultPrint.status_code).json(resultPrint)
-  }
+  },
 }
